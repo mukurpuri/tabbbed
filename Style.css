@@ -1,11 +1,38 @@
 body {
-	width: 600px;
+	width: 100%;
 	height: 580px;
 	background: url('background.png') top no-repeat;
+    margin: 0;
+    position: relative;
+    flex: 1;
+}
+.sidebar {
+    position: fixed;
+    width: 20%;
+    height: 100%;
+    background: #fdfdfd;
+    border: 1px solid #efefef;
+    border-right: 0;
+    top:0;
+    right:0;
+    transition: all 0.2s;
+}
+.sidebar-hide {
+    transform: translate(290px);
+    opacity: 0;
+}
+.sidebar-show {
+    transform: translate(0px);
+    opacity: 100;
+}
+.container {
+    width: 600px;
+    margin: 0 auto;
 }
 .button-container {
 	text-align: center;
-	padding-top:80px;
+    padding-top:60px;
+	padding-bottom:60px;
 }
 .button-container button {
 	display: inline-block;
@@ -25,6 +52,7 @@ body {
     transition: all 0.3s;
     position: relative;
     -webkit-font-smoothing: antialiased;
+    overflow: hidden;
 }
 .button-container button:after {
 	background: #fff;
@@ -43,9 +71,6 @@ body {
     letter-spacing: 3.2px;
     background-color:#09f;
 }
-.button-container button:hover .add-icon{
-    transform: rotate(180deg);
-}
 .button-container button:hover:after {
     left: 120%;
     transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
@@ -53,36 +78,256 @@ body {
 .button-text-container{
 	z-index: 20;
 }
-.add-icon {
-	width: 16px;
-	height: 18px;
-	border-radius: 50% 50%;
-	background: white;
-	color: #41aef6;
-	display: inline-block;
-	padding-left: 3px;
-    transition: all 0.3s;
-}
 .tab-container {
 	margin: 15px;
-    margin-top: 50px;
-    height: 356px;
     overflow: hidden;
+    height: 456px;
+}
+.tab-body {
+    height: 60px;
+    padding: 10px 0;
+    padding-top: 0;
+}
+.tab-body img{
+    margin-right: 7px;
+    width: 17px;
 }
 .tabs {
-	width: 173px;
-    height: 140px;
+    width: 156px;
     border: 1px dashed #9a9a9a;
     border-radius: 4px;
     float: left;
-    margin-right: 15px;
-    margin-bottom: 20px;
     transition: all 0.6s;
     cursor: pointer;
+    background: white;
+    padding: 10px;
+    position: relative;
+    margin-bottom: 12px;
 }
 .tabs:hover {
 	border: 1px solid #d3d3d3;
+    background: #f7f7f7;
+}
+.tabs:hover .tab-close{
+    display: block;
 }
 .tabs:last-child {
 	margin-left: 0;
+}
+.tabs .tab-name {
+    position: relative;
+    border: 1px solid #e0e0e0;
+    margin-left: -70px;
+    border-radius: 9px;
+    background: #fbfbfb;
+    font-size: 10px;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    color: #7d7d7d;
+    margin: 0 auto;
+    text-align: center;
+    max-width: 133px;
+    display: inline-block;
+    transition: all 0.2s;
+    position: relative;
+}
+.tabs:hover .tab-name{
+    background: #fff;
+}
+.row {
+    overflow: hidden;
+}
+.row .tabs:nth-child(2) {
+    margin-left: 18px;
+    margin-right: 18px;
+}
+.tab-footer {
+    text-align: center;
+}
+.tab-close {
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    color: #d2d2d2;
+    display: none;
+}
+.power-button-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+.power-button {
+    border-radius: 40px;
+    background: gold;
+    color: white;
+    border: 0px;
+    outline: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #dabb42;
+    font-size: 12px;
+    padding: 10px 20px;
+    cursor: pointer;
+    position: relative;
+}
+.power-button:after {
+    background: #fff;
+    content: "";
+    height: 155px;
+    left: -75px;
+    opacity: .2;
+    position: absolute;
+    top: -50px;
+    transform: rotate(35deg);
+    transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+    width: 50px;
+    z-index: 0;
+}
+.power-button:hover:after {
+    left: 120%;
+    transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+.modal-bg {
+    background: rgba(0, 0, 0, 0.74);
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.modal {
+    width: 500px;
+    padding-bottom: 70px;
+    background: white;
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-top: 150px;
+    position: relative;
+    overflow: hidden;
+    position: relative;
+}
+.modal-close {
+    font-size: 19px;
+    color: #b1b1b1;
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    cursor: pointer;
+}
+.modal-header {
+    width: 476px;
+    padding: 12px;
+    background: #f7f7f7;
+    border-bottom: 1px solid #eceaea;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #696969;
+    font-weight: bold;
+}
+.modal-body {
+    width: 476px;
+    padding: 12px;
+}
+.modal-body .input-group label{
+    font-size: 11px;
+    display: block;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #696969;
+    margin-bottom: 8px;
+}
+.modal-body .input-group input[type="text"]{
+    display: block;
+    width: 450px;
+    border: 1px solid #c7c5c5;
+    border-radius: 4px;
+    padding: 7px 12px;
+    outline: none;
+    font-size: 14px;
+    margin-bottom: 20px;
+    transition: all 0.2s;
+}
+
+.modal-body .input-group textarea{
+    display: block;
+    width: 450px;
+    border: 1px solid #c7c5c5;
+    border-radius: 4px;
+    padding: 7px 12px;
+    outline: none;
+    font-size: 14px;
+    margin-bottom: 20px;
+    resize: false;
+}
+
+.modal-footer {
+    width: 476px;
+    padding: 12px;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    background: #f7f7f7;
+    border-top: 1px solid #eceaea;
+    height: 30px;
+    overflow: hidden;
+}
+.link-tag-container {
+    position: relative;
+    border: 1px solid #c6c5c5;
+    min-height: 90px;
+    border-radius: 4px;
+    padding: 10px;
+        background: #fdfdfd;
+
+}
+.pull-left: {
+    float: left;
+}
+.pull-right: {
+    float: right;
+}
+.modal-footer .btn {
+    border: 0;
+    color: white;
+    background: #09f;
+    border-radius: 4px;
+    padding: 6px 20px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.link-tag {
+    border: 1px solid #c6c5c5;
+    padding: 3px;
+    min-width: 170px;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    overflow: hidden;
+    padding-right: 30px;
+    position: relative;
+    cursor: pointer;
+    background: white;
+}
+.link-tag img{
+    float: left;
+}
+.link-tag span.link-text{
+    float: left;
+    margin-left: 5px;
+    width: 160px;
+}
+.fa-times {
+    position: absolute;
+    right: 6px;
+    color: #bdbcbc;
+}
+.modal-bg {
+    display: none;
 }

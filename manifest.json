@@ -12,8 +12,7 @@
   },
   
   "browser_action": {
-    "default_title": "Show TabBoard",
-    "default_popup": "popup.html"
+    "default_title": "Show TabBoard"
   },
 
   "permissions": ["tabs","http://*/*", "https://*/*"],
