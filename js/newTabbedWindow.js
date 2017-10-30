@@ -4,6 +4,7 @@ $(document).ready(function(){
 		var tabs_all = [];
     	$(".link-tag-container").html("");
     	chrome.tabs.query({currentWindow:true},function(_tabs){
+    		var total_websites = 0;
     		_tabs.forEach(function(tab){
     			var favURL = tab.favIconUrl;
 
@@ -19,6 +20,7 @@ $(document).ready(function(){
     			tabs_all.push(tab);
     		});
     		$.each(tabs_all, function(index) {
+    			total_websites++;
     			var tab = tabs_all[index];
     			$(".link-tag-container").append(
     				'<a title="'+ tab.title +'" class="link-tag" id="tab_tag_' + tab.id + '" favIconUrl="'+ tab.favIconUrl +'">' +
@@ -28,6 +30,7 @@ $(document).ready(function(){
     				'</a>'
     			);
     		});
+    		$("#total-websites").html("(" + total_websites +")")
 			$(".modal-bg").show();
     	});
 	});
