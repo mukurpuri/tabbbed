@@ -1,7 +1,7 @@
 body {
-	width: 100%;
-	height: 580px;
-	background: url('background.png') top no-repeat;
+    width: 100%;
+    height: 580px;
+    background: url('../images/background.png') top no-repeat;
     margin: 0;
     position: relative;
     flex: 1;
@@ -26,16 +26,16 @@ body {
     opacity: 100;
 }
 .container {
-    width: 600px;
+    width: 730px;
     margin: 0 auto;
 }
 .button-container {
-	text-align: center;
+    text-align: center;
     padding-top:60px;
-	padding-bottom:60px;
+    padding-bottom:60px;
 }
 .button-container button {
-	display: inline-block;
+    display: inline-block;
     border: 0;
     width: 276px;
     height: 50px;
@@ -55,17 +55,17 @@ body {
     overflow: hidden;
 }
 .button-container button:after {
-	background: #fff;
-	content: "";
-	height: 155px;
-	left: -75px;
-	opacity: .2;
-	position: absolute;
-	top: -50px;
-	transform: rotate(35deg);
-	transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
-	width: 50px;
-	z-index: 0;
+    background: #fff;
+    content: "";
+    height: 155px;
+    left: -75px;
+    opacity: .2;
+    position: absolute;
+    top: -50px;
+    transform: rotate(35deg);
+    transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+    width: 50px;
+    z-index: 0;
 }
 .button-container button:hover {
     letter-spacing: 3.2px;
@@ -76,12 +76,11 @@ body {
     transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 .button-text-container{
-	z-index: 20;
+    z-index: 20;
 }
 .tab-container {
-	margin: 15px;
+    margin: 15px;
     overflow: hidden;
-    height: 456px;
 }
 .tab-body {
     height: 60px;
@@ -93,51 +92,59 @@ body {
     width: 17px;
 }
 .tabs {
-    width: 156px;
-    border: 1px dashed #9a9a9a;
+    width: 200px;
     border-radius: 4px;
     float: left;
     transition: all 0.6s;
     cursor: pointer;
-    background: white;
+    background: #fcfcfc;
     padding: 10px;
     position: relative;
     margin-bottom: 12px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: all 0.2s;
 }
 .tabs:hover {
-	border: 1px solid #d3d3d3;
     background: #f7f7f7;
 }
 .tabs:hover .tab-close{
     display: block;
 }
 .tabs:last-child {
-	margin-left: 0;
+    margin-left: 0;
 }
-.tabs .tab-name {
-    position: relative;
-    border: 1px solid #e0e0e0;
-    margin-left: -70px;
-    border-radius: 9px;
-    background: #fbfbfb;
-    font-size: 10px;
-    font-family: sans-serif;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 3px 10px;
-    color: #7d7d7d;
-    margin: 0 auto;
-    text-align: center;
-    max-width: 133px;
-    display: inline-block;
-    transition: all 0.2s;
-    position: relative;
-}
-.tabs:hover .tab-name{
-    background: #fff;
+.tabs {
+    .tab-name {
+        position: relative;
+        border: 1px solid #e0e0e0;
+        margin-left: -70px;
+        border-radius: 9px;
+        background: #fbfbfb;
+        font-size: 10px;
+        font-family: sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 3px 10px;
+        color: #7d7d7d;
+        margin: 0 auto;
+        text-align: center;
+        max-width: 133px;
+        display: inline-block;
+        transition: all 0.2s;
+        position: relative;
+        font-weight: bold;
+    }
+    &:hover {
+        .tab-name{
+            background: #fff;
+        }
+    }
 }
 .row {
     overflow: hidden;
+    padding-top: 2px;
+    padding-left: 2px;
 }
 .row .tabs:nth-child(2) {
     margin-left: 18px;
@@ -198,6 +205,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
+    overflow-y: auto;
 }
 .modal {
     width: 500px;
@@ -209,6 +217,7 @@ body {
     position: relative;
     overflow: hidden;
     position: relative;
+    margin-bottom: 100px;
 }
 .modal-close {
     font-size: 19px;
@@ -279,11 +288,27 @@ body {
 .link-tag-container {
     position: relative;
     border: 1px solid #c6c5c5;
-    min-height: 90px;
     border-radius: 4px;
     padding: 10px;
-        background: #fdfdfd;
+    background: #fdfdfd;
+    overflow: hidden;
+    padding-bottom: 0px;
+    padding-right: 0px;
 
+    .link-image {
+        display: block;
+        float:left;
+        border-radius: 50% 50%;
+        overflow: hidden;
+    }
+    .link-text {
+        float: left;
+        margin-left: 5px;
+        width: 84px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 }
 .pull-left {
     float: left;
@@ -304,7 +329,7 @@ body {
 .link-tag {
     border: 1px solid #c6c5c5;
     padding: 3px;
-    min-width: 170px;
+    min-width: 20px;
     float: left;
     margin-right: 10px;
     margin-bottom: 10px;
@@ -314,20 +339,39 @@ body {
     position: relative;
     cursor: pointer;
     background: white;
+
+    &:hover {
+        background: rgba(0, 0, 0, 0.04);
+    }
 }
-.link-tag img{
-    float: left;
-}
-.link-tag span.link-text{
-    float: left;
-    margin-left: 5px;
-    width: 160px;
-}
-.fa-times {
+.remove-tab-tag {
     position: absolute;
     right: 6px;
     color: #bdbcbc;
+    top: 6px;
 }
 .modal-bg {
     display: none;
+}
+.button {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+.button:after {
+    background: #fff;
+    content: "";
+    height: 155px;
+    left: -75px;
+    opacity: .2;
+    position: absolute;
+    top: -50px;
+    transform: rotate(35deg);
+    transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+    width: 50px;
+    z-index: 0;
+}
+.button:hover:after {
+    left: 120%;
+    transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
 }

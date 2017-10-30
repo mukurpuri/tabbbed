@@ -1,7 +1,7 @@
 body {
   width: 100%;
   height: 580px;
-  background: url("background.png") top no-repeat;
+  background: url("../images/background.png") top no-repeat;
   margin: 0;
   position: relative;
   flex: 1; }
@@ -26,7 +26,7 @@ body {
   opacity: 100; }
 
 .container {
-  width: 600px;
+  width: 730px;
   margin: 0 auto; }
 
 .button-container {
@@ -80,8 +80,7 @@ body {
 
 .tab-container {
   margin: 15px;
-  overflow: hidden;
-  height: 456px; }
+  overflow: hidden; }
 
 .tab-body {
   height: 60px;
@@ -93,19 +92,20 @@ body {
   width: 17px; }
 
 .tabs {
-  width: 156px;
-  border: 1px dashed #9a9a9a;
+  width: 200px;
   border-radius: 4px;
   float: left;
   transition: all 0.6s;
   cursor: pointer;
-  background: white;
+  background: #fcfcfc;
   padding: 10px;
   position: relative;
-  margin-bottom: 12px; }
+  margin-bottom: 12px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.2s; }
 
 .tabs:hover {
-  border: 1px solid #d3d3d3;
   background: #f7f7f7; }
 
 .tabs:hover .tab-close {
@@ -131,13 +131,15 @@ body {
   max-width: 133px;
   display: inline-block;
   transition: all 0.2s;
-  position: relative; }
-
+  position: relative;
+  font-weight: bold; }
 .tabs:hover .tab-name {
   background: #fff; }
 
 .row {
-  overflow: hidden; }
+  overflow: hidden;
+  padding-top: 2px;
+  padding-left: 2px; }
 
 .row .tabs:nth-child(2) {
   margin-left: 18px;
@@ -197,7 +199,8 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  overflow-y: auto; }
 
 .modal {
   width: 500px;
@@ -208,7 +211,8 @@ body {
   margin-top: 150px;
   position: relative;
   overflow: hidden;
-  position: relative; }
+  position: relative;
+  margin-bottom: 100px; }
 
 .modal-close {
   font-size: 19px;
@@ -277,10 +281,24 @@ body {
 .link-tag-container {
   position: relative;
   border: 1px solid #c6c5c5;
-  min-height: 90px;
   border-radius: 4px;
   padding: 10px;
-  background: #fdfdfd; }
+  background: #fdfdfd;
+  overflow: hidden;
+  padding-bottom: 0px;
+  padding-right: 0px; }
+  .link-tag-container .link-image {
+    display: block;
+    float: left;
+    border-radius: 50% 50%;
+    overflow: hidden; }
+  .link-tag-container .link-text {
+    float: left;
+    margin-left: 5px;
+    width: 84px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
 
 .pull-left {
   float: left; }
@@ -301,7 +319,7 @@ body {
 .link-tag {
   border: 1px solid #c6c5c5;
   padding: 3px;
-  min-width: 170px;
+  min-width: 20px;
   float: left;
   margin-right: 10px;
   margin-bottom: 10px;
@@ -311,21 +329,38 @@ body {
   position: relative;
   cursor: pointer;
   background: white; }
+  .link-tag:hover {
+    background: rgba(0, 0, 0, 0.04); }
 
-.link-tag img {
-  float: left; }
-
-.link-tag span.link-text {
-  float: left;
-  margin-left: 5px;
-  width: 160px; }
-
-.fa-times {
+.remove-tab-tag {
   position: absolute;
   right: 6px;
-  color: #bdbcbc; }
+  color: #bdbcbc;
+  top: 6px; }
 
 .modal-bg {
   display: none; }
+
+.button {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer; }
+
+.button:after {
+  background: #fff;
+  content: "";
+  height: 155px;
+  left: -75px;
+  opacity: .2;
+  position: absolute;
+  top: -50px;
+  transform: rotate(35deg);
+  transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+  width: 50px;
+  z-index: 0; }
+
+.button:hover:after {
+  left: 120%;
+  transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1); }
 
 /*# sourceMappingURL=Style.css.map */
