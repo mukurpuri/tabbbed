@@ -80,7 +80,8 @@ body {
 
 .tab-container {
   margin: 15px;
-  overflow: hidden; }
+  overflow: hidden;
+  padding: 2px; }
 
 .tab-body {
   height: 60px;
@@ -103,7 +104,8 @@ body {
   margin-bottom: 12px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
   cursor: pointer;
-  transition: all 0.2s; }
+  transition: all 0.2s;
+  margin-right: 10px; }
 
 .tabs:hover {
   background: #f7f7f7; }
@@ -135,6 +137,10 @@ body {
   font-weight: bold; }
 .tabs:hover .tab-name {
   background: #fff; }
+.tabs .tab-icons {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px; }
 
 .row {
   overflow: hidden;

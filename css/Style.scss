@@ -81,6 +81,7 @@ body {
 .tab-container {
     margin: 15px;
     overflow: hidden;
+    padding: 2px;
 }
 .tab-body {
     height: 60px;
@@ -104,6 +105,7 @@ body {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
     cursor: pointer;
     transition: all 0.2s;
+    margin-right: 10px;
 }
 .tabs:hover {
     background: #f7f7f7;
@@ -139,6 +141,11 @@ body {
         .tab-name{
             background: #fff;
         }
+    }
+    .tab-icons {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
     }
 }
 .row {
