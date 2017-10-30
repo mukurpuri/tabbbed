@@ -33,9 +33,7 @@ $(document).ready(function(){
 	});
 
 	$("body").on('click', '.remove-tab-tag', function(event) {
-		console.log('qewf');
-		var tabID = parseInt($(this).attr("tabID"));
-		$("#tab_tag_" + tabID).remove();
+		$("#tab_tag_" + parseInt($(this).attr("tabID"))).remove();
 	});
 
 	$("#tabbbed_save").on('click', function(event) {
