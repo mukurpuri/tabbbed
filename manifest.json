@@ -18,9 +18,9 @@
   "permissions": ["tabs","http://*/*", "https://*/*"],
 
   "icons": {
-    "128": "icon.png",
-    "256": "icon.png",
-    "512": "icon.png"
+    "128": "images/icon.png",
+    "256": "images/icon.png",
+    "512": "images/icon.png"
   }
 
 }
