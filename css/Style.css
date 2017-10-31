@@ -1,10 +1,10 @@
 body {
   width: 100%;
-  height: 580px;
   background: url("../images/background.png") top no-repeat;
   margin: 0;
   position: relative;
-  flex: 1; }
+  flex: 1;
+  height: 100%; }
 
 .sidebar {
   position: fixed;
@@ -26,7 +26,7 @@ body {
   opacity: 100; }
 
 .container {
-  width: 730px;
+  width: 720px;
   margin: 0 auto; }
 
 .button-container {
@@ -81,7 +81,8 @@ body {
 .tab-container {
   margin: 15px;
   overflow: hidden;
-  padding: 2px; }
+  padding: 2px;
+  margin-right: 0px; }
 
 .tab-body {
   height: 60px;
@@ -211,7 +212,7 @@ body {
   background: white;
   border-radius: 4px;
   margin: 0 auto;
-  margin-top: 150px;
+  margin-top: 45px;
   position: relative;
   overflow: hidden;
   position: relative;

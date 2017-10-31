@@ -17,7 +17,7 @@ $(document).ready(function(){
                 _.each(tabbb.tabbbes, function(tabbb){
                     icons = icons + '<img title="' + tabbb.title + '" class="tab-icons" src="' + tabbb.favIconUrl + '"  />'
                 });
-                var tabs = '<a tabbbID="'+tabbb.id+'" class="tabs filledTabs">'+
+                var tabs = '<a class="tabs filledTabs">'+
                 '<div title=' + tabbb.description + '>'+
                 '<span id="' + tabbb.id +'" title="Close" class="fa fa-times tab-close"></span>'+
                 '<div class="tab-body">'+icons+'</div>'+ 

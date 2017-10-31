@@ -80,6 +80,9 @@ $(document).ready(function(){
 				chrome.storage.sync.set({'tabbbes': newtabbbes}, function(){});
 			});
 		}
+		event.preventDefault();
+		event.stopPropagation();
+		event.stopImmediatePropagation();
 	});
 
 	function newTabbedWindowInitiate() {
