@@ -13,7 +13,7 @@
   
   "browser_action": {
     "default_popup": "tabbbed.html",
-    "default_title": "Show TabBoard"
+    "default_title": "Show Tabbbed"
   },
 
   "permissions": ["tabs","http://*/*", "https://*/*","storage"],
