@@ -56,6 +56,13 @@
 					<textarea id="description"></textarea>
 				</div>
 				<div class="input-group">
+					<label>Privacy Mode</label>
+					<div class="radio-container">
+						<div class="options"><input value="false" checked id="normal" name="mode" type="radio" /><label for="normal">Normal<label></div>
+						<div class="options"><input value="true" id="private" name="mode" type="radio"/><label for="private">Incognito<label></div>
+					</div>
+				</div>
+				<div class="input-group">
 					<label>Websites <span id="total-websites"></span></label>
 					<div class="link-tag-container"></div>
 				</div>
@@ -68,8 +75,8 @@
 </body>
 <script src="js/lib/lodash.min.js" type="text/javascript"></script>
 <script src="js/lib/jquery.js" type="text/javascript"></script>
-<script src="js/application.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/initiate.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/application.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/modal.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/newTabbedWindow.js" type="text/javascript" charset="utf-8"></script>
 </html>

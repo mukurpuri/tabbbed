@@ -1,5 +1,13 @@
 
 $(document).ready(function(){
+
+	var restrictedTabs = [
+		"chrome-extension://gfbkblpjleebfnmbcjhnnppddedllabl/tabbbed.html",
+		"chrome://newtab/"
+	];
+
+	var restrictedUrlsList = ["chrome"];
+
 	$("body").on("click",".tab-button", function(){
 		newTabbedWindowInitiate();
 	});
@@ -17,14 +25,19 @@ $(document).ready(function(){
 		var tabbb = [];
 		var name = $("#name").val().trim();
 		var description = $("#description").val().trim();
+		var mode = $("input[name=\"mode\"]:checked").val();
+
+		console.log(mode);
+
 		var tabbbes = [];
 
 		if(name) {
 			$(".link-tag").each(function(){
 				var tag = {
-					"id": $(this).attr("id"),
-					"title": $(this).attr("title"),
-					"favIconUrl": $(this).attr("favIconUrl")
+					"id": $(this).attr("id").trim(),
+					"title": $(this).attr("title").trim(),
+					"url": $(this).attr("tabUrl").trim(),
+					"favIconUrl": $(this).attr("favIconUrl").trim()
 				};
 				tabbbes.push(tag);
 			});
@@ -35,6 +48,7 @@ $(document).ready(function(){
 					"id": Math.floor(Date.now()),
 					"name": name,
 					"description": description,
+					"mode": mode,
 					"tabbbes": tabbbes
 				}
 				chrome.storage.sync.get("tabbbes", function(_tabbbes){
@@ -53,17 +67,19 @@ $(document).ready(function(){
 	});
 
 	$("body").on('click','.tab-close', function(event){
-		var tabbb_id = $(this).attr("id");
-		chrome.storage.sync.get("tabbbes", function(_tabbbes){
-            var tabbbes = _tabbbes.tabbbes;
-            var newtabbbes = [];
-            _.each(tabbbes, function(tabbb){
-            	if(parseInt(tabbb.id) !== parseInt(tabbb_id)) {
-            		newtabbbes.push(tabbb);
-            	}
-            });
-            chrome.storage.sync.set({'tabbbes': newtabbbes}, function(){});
-        });
+		if (confirm("Are you sure, you want to delete this Tabbb?")) {
+			var tabbb_id = $(this).attr("id");
+			chrome.storage.sync.get("tabbbes", function(_tabbbes){
+				var tabbbes = _tabbbes.tabbbes;
+				var newtabbbes = [];
+				_.each(tabbbes, function(tabbb){
+					if(parseInt(tabbb.id) !== parseInt(tabbb_id)) {
+						newtabbbes.push(tabbb);
+					}
+				});
+				chrome.storage.sync.set({'tabbbes': newtabbbes}, function(){});
+			});
+		}
 	});
 
 	function newTabbedWindowInitiate() {
@@ -72,6 +88,11 @@ $(document).ready(function(){
     	chrome.tabs.query({currentWindow:true},function(_tabs){
     		var total_websites = 0;
     		_tabs.forEach(function(tab){
+
+    			if(_.includes(restrictedTabs, tab.url)) {
+    				return false;
+    			}
+
     			var favURL = tab.favIconUrl;
 
     			if(!favURL) {
@@ -89,7 +110,7 @@ $(document).ready(function(){
     			total_websites++;
     			var tab = tabs_all[index];
     			$(".link-tag-container").append(
-    				'<a title="'+ tab.title +'" class="link-tag" id="tab_tag_' + tab.id + '" favIconUrl="'+ tab.favIconUrl +'">' +
+    				'<a tabUrl="'+ tab.url +'" title="'+ tab.title +'" class="link-tag" id="tab_tag_' + tab.id + '" favIconUrl="'+ tab.favIconUrl +'">' +
     				'<span tabIndex="' + index + '" tabID="' + tab.id + '" class="fa fa-times remove-tab-tag"></span>' +
     				'<img class="link-image" height="20" width="20" src="'+ tab.favIconUrl +'">' +
     				'<span class="link-text">' + tab.title + '</span>' +

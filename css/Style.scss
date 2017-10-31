@@ -384,3 +384,22 @@ body {
     left: 120%;
     transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
 }
+.radio-container {
+    overflow: hidden;
+    margin-bottom: 20px;
+    .options {
+        margin-right: 10px;
+        float: left;
+        overflow: hidden;
+        label {
+            font-weight: bold;
+            display: inline;
+        }
+        input {
+            display: inline;
+            margin: 0;
+            margin-right: 6px;
+            vertical-align: bottom;
+        }
+    }
+}
