@@ -88,40 +88,37 @@ body {
     padding: 10px 0;
     padding-top: 0;
 }
-.tab-body img{
-    margin-right: 7px;
-    width: 17px;
-}
 .tabs {
     width: 200px;
     border-radius: 4px;
     float: left;
     transition: all 0.6s;
     cursor: pointer;
-    background: #fcfcfc;
     padding: 10px;
     position: relative;
     margin-bottom: 12px;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
     cursor: pointer;
     transition: all 0.2s;
     margin-right: 10px;
-}
-.tabs:hover {
-    background: #f7f7f7;
-}
-.tabs:hover .tab-close{
-    display: block;
-}
-.tabs:last-child {
-    margin-left: 0;
-}
-.tabs {
+
+    &.filledTabs {
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+        background: #fcfcfc;
+
+        .tab-name {
+            font-weight: bold;
+        }
+    }
+
+    &.emptyTabs {
+        border: 1px dashed #acacac;
+        background: rgba(255, 255, 255, 0);
+    }
     .tab-name {
         position: relative;
         border: 1px solid #e0e0e0;
         margin-left: -70px;
-        border-radius: 9px;
+        border-radius: 4px;
         background: #fbfbfb;
         font-size: 10px;
         font-family: sans-serif;
@@ -135,17 +132,21 @@ body {
         display: inline-block;
         transition: all 0.2s;
         position: relative;
-        font-weight: bold;
     }
     &:hover {
+        background: #f7f7f7;
         .tab-name{
             background: #fff;
         }
+        .tab-close{
+            display: block;
+        }
     }
     .tab-icons {
-        width: 20px;
-        height: 20px;
-        margin-right: 5px;
+        padding: 3px;
+        border: 1px solid #d9d9d9;
+        width: 17px;
+        margin-bottom: -2px;
     }
 }
 .row {
@@ -163,9 +164,10 @@ body {
 .tab-close {
     position: absolute;
     right: 7px;
-    top: 7px;
+    bottom: 11px;
     color: #d2d2d2;
     display: none;
+    font-size: 14px;
 }
 .power-button-container {
     position: fixed;
