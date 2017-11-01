@@ -19,7 +19,12 @@ $(document).ready(function(){
                     icons = icons + '<img title="' + tabbb.title + '" class="tab-icons" src="' + tabbb.favIconUrl + '"  />'
                 });
                 var tabs = '<a tabbbID="'+tabbb.id+'" class="tabs filledTabs">'+
-                '<span id="' + tabbb.id +'" title="Close" class="fa fa-times tab-close"></span>'+
+                '<div class="tab-opener-buttons">'+
+                '<div class="tab-opener-btn openTab" title="Open in the current Tab"><i class="fa fa-send"></i></div>'+
+                '<div class="tab-opener-btn openNew" title="Open in a new window"><i class="fa fa-window-restore"></i></div>'+
+                '</div>'+
+                '<div class="tab-opener"></div>'+
+                '<span id="' + tabbb.id +'" title="Close" class="fa fa-times tab-remove"></span>'+
                 '<div class="tab-body">'+icons+'</div>'+ 
                 '<div class="tab-footer">'+
                 '<div class="tab-name">' + tabbb.name + '</div>'+

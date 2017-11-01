@@ -29,20 +29,7 @@ $(document).ready(function(){
 		var tabbbes = [];
 
 		if(name) {
-
 			$(".link-tag").each(function(){
-				var id = $(this).attr("id").trim();
-				// Update Title Table
-				
-				var title =  $(this).attr("title").trim();
-
-
-
-
-
-
-
-			
 				var tag = {
 					"id": $(this).attr("id").trim(),
 					"title": $(this).attr("title").trim(),
@@ -97,7 +84,7 @@ $(document).ready(function(){
 	function newTabbedWindowInitiate() {
 		var tabs_all = [];
     	$(".link-tag-container").html("");
-    	chrome.tabs.query({currentWindow:true},function(_tabs) {
+    	chrome.tabs.query({currentWindow:true},function(_tabs){
     		var total_websites = 0;
     		_tabs.forEach(function(tab){
 
