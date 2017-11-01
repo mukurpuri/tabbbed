@@ -16,8 +16,8 @@ $(document).ready(function(){
                 });
                 var tabs = '<a tabbbID="'+tabbb.id+'" class="tabs filledTabs">'+
                 '<div class="tab-opener-buttons">'+
-                '<div class="tab-opener-btn openTab" title="Open in the current Tab"><i class="fa fa-send"></i></div>'+
-                '<div class="tab-opener-btn openNew" title="Open in a new window"><i class="fa fa-window-restore"></i></div>'+
+                '<div class="tab-opener-btn openTab" tabbbID="'+tabbb.id+'" title="Open in the current Tab"><i class="fa fa-send"></i></div>'+
+                '<div class="tab-opener-btn openNew" tabbbID="'+tabbb.id+'" title="Open in a new window"><i class="fa fa-window-restore"></i></div>'+
                 '</div>'+
                 '<div class="tab-opener"></div>'+
                 '<div>'+
@@ -47,18 +47,29 @@ $(document).ready(function(){
         });
     }
 
-    $("body").on('click', '.filledTabs', function(event) {
+    $("body").on('click', '.openNew', function(event) {
         var id = $(this).attr("tabbbID");
         chrome.storage.sync.get("tabbbes", function(_tabbbes){
             var urlList = [];
             var selectedTabbb = _.find(_tabbbes.tabbbes, function(tabbb) { return parseInt(tabbb.id) === parseInt(id); });
-            console.log(selectedTabbb);
             var mode = selectedTabbb.mode === "true" ? true : false;
             _.each(selectedTabbb.tabbbes, function(tabbb){
                 urlList.push(tabbb.url);
             });
             chrome.windows.create({'url':urlList,'focused':true, 'incognito': mode, 'state':'maximized'}, function(){
             });
+        });
+    });
+
+    $("body").on('click', '.openTab', function(event) {
+        var id = $(this).attr("tabbbID");
+        chrome.storage.sync.get("tabbbes", function(_tabbbes){
+            var selectedTabbb = _.find(_tabbbes.tabbbes, function(tabbb) { return parseInt(tabbb.id) === parseInt(id); });
+            var mode = selectedTabbb.mode === "true" ? true : false;
+            _.each(selectedTabbb.tabbbes, function(tabbb){
+                chrome.tabs.create({'url':tabbb.url, 'active': false}, function(){
+                });
+            });            
         });
     });
 });

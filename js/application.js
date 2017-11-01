@@ -18,10 +18,10 @@ $(document).ready(function(){
                 _.each(tabbb.tabbbes, function(tabbb){
                     icons = icons + '<img title="' + tabbb.title + '" class="tab-icons" src="' + tabbb.favIconUrl + '"  />'
                 });
-                var tabs = '<a tabbbID="'+tabbb.id+'" class="tabs filledTabs">'+
+                var tabs = '<a class="tabs filledTabs">'+
                 '<div class="tab-opener-buttons">'+
-                '<div class="tab-opener-btn openTab" title="Open in the current Tab"><i class="fa fa-send"></i></div>'+
-                '<div class="tab-opener-btn openNew" title="Open in a new window"><i class="fa fa-window-restore"></i></div>'+
+                '<div class="tab-opener-btn openTab" tabbbID="'+tabbb.id+'" title="Open in the current Tab"><i class="fa fa-send"></i></div>'+
+                '<div class="tab-opener-btn openNew" tabbbID="'+tabbb.id+'" title="Open in a new window"><i class="fa fa-window-restore"></i></div>'+
                 '</div>'+
                 '<div class="tab-opener"></div>'+
                 '<span id="' + tabbb.id +'" title="Close" class="fa fa-times tab-remove"></span>'+

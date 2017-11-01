@@ -178,10 +178,10 @@ body {
     position: absolute;
     right: 7px;
     bottom: 11px;
-    color: #d2d2d2;
+    color: #828282;
     display: none;
     font-size: 14px;
-    z-index: 2; }
+    z-index: 4; }
   .tabs:hover {
     background: #f7f7f7; }
     .tabs:hover .tab-opener, .tabs:hover .tab-opener-buttons {
