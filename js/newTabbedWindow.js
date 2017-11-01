@@ -17,22 +17,32 @@ $(document).ready(function(){
 	});
 
 	$("body").on('click', '.remove-tab-tag', function(event) {
-		$("#tab_tag_" + parseInt($(this).attr("tabID"))).remove();
+		$("#tab_" + parseInt($(this).attr("tabID"))).remove();
 	});
 
 	$("#tabbbed_save").on('click', function(event) {
 		event.preventDefault();
 		var tabbb = [];
 		var name = $("#name").val().trim();
-		var description = $("#description").val().trim();
 		var mode = $("input[name=\"mode\"]:checked").val();
-
-		console.log(mode);
 
 		var tabbbes = [];
 
 		if(name) {
+
 			$(".link-tag").each(function(){
+				var id = $(this).attr("id").trim();
+				// Update Title Table
+				
+				var title =  $(this).attr("title").trim();
+
+
+
+
+
+
+
+			
 				var tag = {
 					"id": $(this).attr("id").trim(),
 					"title": $(this).attr("title").trim(),
@@ -44,10 +54,10 @@ $(document).ready(function(){
 			if(tabbbes.length <= 0) {
 				alert("Select atleast one website")
 			} else {
+				var id = (Math.floor(Date.now())).toString();
 				tabbb = {
-					"id": Math.floor(Date.now()),
+					"id": id.substr(id.length - 4),
 					"name": name,
-					"description": description,
 					"mode": mode,
 					"tabbbes": tabbbes
 				}
@@ -56,7 +66,6 @@ $(document).ready(function(){
 					newTabbbes.push(tabbb);
 					chrome.storage.sync.set({'tabbbes': newTabbbes}, function(){
 						$("#name").val("");
-						$("#description").val("");
 						$(".modal-bg").hide();
 					});
 				});
@@ -73,7 +82,7 @@ $(document).ready(function(){
 				var tabbbes = _tabbbes.tabbbes;
 				var newtabbbes = [];
 				_.each(tabbbes, function(tabbb){
-					if(parseInt(tabbb.id) !== parseInt(tabbb_id)) {
+					if(tabbb.id !== tabbb_id) {
 						newtabbbes.push(tabbb);
 					}
 				});
@@ -88,7 +97,7 @@ $(document).ready(function(){
 	function newTabbedWindowInitiate() {
 		var tabs_all = [];
     	$(".link-tag-container").html("");
-    	chrome.tabs.query({currentWindow:true},function(_tabs){
+    	chrome.tabs.query({currentWindow:true},function(_tabs) {
     		var total_websites = 0;
     		_tabs.forEach(function(tab){
 
@@ -113,7 +122,7 @@ $(document).ready(function(){
     			total_websites++;
     			var tab = tabs_all[index];
     			$(".link-tag-container").append(
-    				'<a tabUrl="'+ tab.url +'" title="'+ tab.title +'" class="link-tag" id="tab_tag_' + tab.id + '" favIconUrl="'+ tab.favIconUrl +'">' +
+    				'<a tabUrl="'+ tab.url +'" title="'+ tab.title +'" class="link-tag" id="tab_' + tab.id + '" favIconUrl="'+ tab.favIconUrl +'">' +
     				'<span tabIndex="' + index + '" tabID="' + tab.id + '" class="fa fa-times remove-tab-tag"></span>' +
     				'<img class="link-image" height="20" width="20" src="'+ tab.favIconUrl +'">' +
     				'<span class="link-text">' + tab.title + '</span>' +

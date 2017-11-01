@@ -1,5 +1,6 @@
 
 $(document).ready(function(){
+    var totalTabs = 6;
 	$(".power-button").on("click", function(){
 		$(this).hide();
 		$(".sidebar").removeClass("sidebar-hide").addClass("show-sidebar");
@@ -17,8 +18,7 @@ $(document).ready(function(){
                 _.each(tabbb.tabbbes, function(tabbb){
                     icons = icons + '<img title="' + tabbb.title + '" class="tab-icons" src="' + tabbb.favIconUrl + '"  />'
                 });
-                var tabs = '<a class="tabs filledTabs">'+
-                '<div title=' + tabbb.description + '>'+
+                var tabs = '<a tabbbID="'+tabbb.id+'" class="tabs filledTabs">'+
                 '<span id="' + tabbb.id +'" title="Close" class="fa fa-times tab-close"></span>'+
                 '<div class="tab-body">'+icons+'</div>'+ 
                 '<div class="tab-footer">'+
@@ -28,7 +28,7 @@ $(document).ready(function(){
                 '</a>';
                 $(".tab-container").append(tabs);
             });
-            var leftOver = 9 - (tabbbes.length);
+            var leftOver = totalTabs - (tabbbes.length);
             if(leftOver > 0) {
                 var emptyTabs = '<a class="tabs emptyTabs">'+
                 '<div title="Add new Tabbbed Window">'+

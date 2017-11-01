@@ -1,10 +1,9 @@
 {
   "name": "Tabbbed",
-  "version": "0.1",
+  "version": "0.3",
   "manifest_version": 2,
 
-
-  "description": "Group your tabs for more clearity",
+  "description": "Group your tabs and make your life easier",
   
   "background": {
     "persistent": false,
