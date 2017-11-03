@@ -7,7 +7,6 @@ $(document).ready(function(){
 
         chrome.storage.sync.get("tabbbes", function(_tabbbes){
             var tabbbes = _tabbbes.tabbbes;
-            console.log(tabbbes);
             if(!tabbbes) {chrome.storage.sync.set({'tabbbes': []});}
             _.each(tabbbes, function(tabbb){
                 var icons = "";
@@ -15,13 +14,13 @@ $(document).ready(function(){
                     icons = icons + '<img title="' + tabbb.title + '" class="tab-icons" src="' + tabbb.favIconUrl + '"  />'
                 });
                 var tabs = '<a tabbbID="'+tabbb.id+'" class="tabs filledTabs">'+
+                '<span id="' + tabbb.id +'" title="Close" class="fa fa-times tab-remove"></span>'+
                 '<div class="tab-opener-buttons">'+
                 '<div class="tab-opener-btn openTab" tabbbID="'+tabbb.id+'" title="Open in the current Tab"><i class="fa fa-send"></i></div>'+
                 '<div class="tab-opener-btn openNew" tabbbID="'+tabbb.id+'" title="Open in a new window"><i class="fa fa-window-restore"></i></div>'+
                 '</div>'+
                 '<div class="tab-opener"></div>'+
                 '<div>'+
-                '<span id="' + tabbb.id +'" title="Close" class="fa fa-times tab-remove"></span>'+
                 '<div class="tab-body">'+icons+'</div>'+ 
                 '<div class="tab-footer">'+
                 '<div class="tab-name">' + tabbb.name + '</div>'+

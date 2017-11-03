@@ -62,7 +62,7 @@ $(document).ready(function(){
 		}
 	});
 
-	$("body").on('click','.tab-close', function(event){
+	$("body").on('click','.tab-remove', function(event){
 		if (confirm("Are you sure, you want to delete this Tabbb?")) {
 			var tabbb_id = $(this).attr("id");
 			chrome.storage.sync.get("tabbbes", function(_tabbbes){
@@ -76,9 +76,6 @@ $(document).ready(function(){
 				chrome.storage.sync.set({'tabbbes': newtabbbes}, function(){});
 			});
 		}
-		event.preventDefault();
-		event.stopPropagation();
-		event.stopImmediatePropagation();
 	});
 
 	function newTabbedWindowInitiate() {
@@ -117,7 +114,7 @@ $(document).ready(function(){
     			);
     		});
     		$("#total-websites").html("(" + total_websites +")")
-			$(".modal-bg").show();
+			$("#tab-window-creator").show();
     	});
 	}
 });
