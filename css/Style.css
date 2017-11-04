@@ -275,7 +275,7 @@ body {
   padding-bottom: 70px; }
 
 .modal-lg {
-  width: 700px;
+  width: 600px;
   height: 580px;
   top: -36px;
   margin-bottom: -25px; }
@@ -449,15 +449,15 @@ body {
 .footer {
   position: absolute;
   bottom: 0px;
-  width: 572px;
+  width: 100%;
   padding: 10px;
   left: 0;
   right: 0;
-  margin: 0 auto; }
+  margin: 0 auto;
+  text-align: center; }
   .footer .footer-btn {
-    float: left;
+    display: inline-block;
     margin-right: 17px;
-    display: block;
     padding: 3px 13px;
     border-radius: 4px;
     letter-spacing: 1px;
@@ -486,7 +486,7 @@ body {
 
 .tree-container {
   position: relative;
-  width: 1000%;
+  width: 100%;
   height: 515px;
   overflow-x: auto; }
   .tree-container .tree {
@@ -494,9 +494,9 @@ body {
     border-radius: 4px;
     background: rgba(0, 0, 0, 0.02);
     padding: 10px 10px;
-    width: 654px;
-    margin-bottom: 0px;
-    padding-top: 0px; }
+    margin-bottom: 10px;
+    padding-top: 0px;
+    position: relative; }
   .tree-container input[type="checkbox"] {
     margin: 10px;
     vertical-align: bottom;
@@ -504,7 +504,8 @@ body {
     margin-bottom: 1px; }
   .tree-container label {
     font-size: 14px;
-    letter-spacing: 1px; }
+    letter-spacing: 1px;
+    cursor: pointer; }
   .tree-container .label-text {
     display: inline-block;
     width: 500px;
@@ -536,5 +537,19 @@ body {
     box-shadow: 1px 1px 1px #f1f1f1;
     width: 12px;
     text-align: center; }
+
+.tree-header {
+  border-bottom: 1px solid #dcdcdc;
+  margin: 0 -10px;
+  padding: 10px;
+  letter-spacing: 1px;
+  font-size: 13px;
+  color: #757575;
+  position: relative;
+  overflow: hidden; }
+  .tree-header .close-window-tab {
+    float: right;
+    margin: 0 !important;
+    cursor: pointer; }
 
 /*# sourceMappingURL=Style.css.map */

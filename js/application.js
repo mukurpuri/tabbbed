@@ -1,13 +1,17 @@
 
 $(document).ready(function(){
-    
-    openTabTree();
+
+    chrome.storage.sync.get("tabTree", function(tabTree){
+        console.log(tabTree.tabTree);
+        if(!tabTree.tabTree) {
+            chrome.storage.sync.set({'tabTree': 'hide'});
+        }
+        if(tabTree.tabTree === "show") {
+            openTabTree();    
+        }
+    });
 
     var totalTabs = 6;
-	$(".power-button").on("click", function(){
-		$(this).hide();
-		$(".sidebar").removeClass("sidebar-hide").addClass("show-sidebar");
-	});
 	chrome.storage.onChanged.addListener(function(){
 		$(".tab-container").html("");
 		chrome.storage.sync.get("tabbbes", function(_tabbbes){
@@ -98,19 +102,36 @@ $(document).ready(function(){
         }
     });
 
+    $("body").on("click",".close-window-tab", function(){
+        var windowId = parseInt($(this).attr('windowId'));
+        chrome.windows.remove(windowId, function(){
+            $("#tree_"+windowId).remove();
+        });
+    });
+
     $("body").on("click",".close-tab", function(){
-        var id = $(this).attr('id');
+        var id = parseInt($(this).attr('id'));
         var url = $(this).attr('url');
-        var index = $(this).attr('index');
+        var index = parseInt($(this).attr('index'));
+        var windowId = parseInt($(this).attr('windowId'));
 
         if($(this).is(":checked")){
-            console.log(index);
-            chrome.tabs.create({'url':url, 'index': parseInt(index),'active':false}, function(tab){
+            chrome.tabs.create({'url':url, 'index': index,'active':false, 'windowId':windowId}, function(tab){
                 $(".close-tab#" + id).attr("id",tab.id);
+                $(".close-tab#" + id).attr("windowId",tab.windowId);
             });
         } else {
-            chrome.tabs.remove(parseInt(id));
+            chrome.tabs.remove(id);
         }
+    });
+
+    $("body").on("click", ".navigate-tab", function(){
+        var id = parseInt($(this).attr("tabId"));
+        var windowId = parseInt($(this).attr("windowId"));
+        console.log(id+"__"+windowId);
+        chrome.windows.update(windowId, {focused: true}, function(window){
+            chrome.tabs.update(id, {'active': true});
+        });
     });
 });
 
@@ -133,24 +154,25 @@ function groupUrls(urls) {
     }, {});
     return Object.values(results);
 }
-
 function openTabTree() {
     $("#tab-tree-creator").show();
-    $(".tree").html("");
-
+    chrome.storage.sync.set({'tabTree': 'show'});
     chrome.windows.getAll(function(windows){
-        _.each(windows, function(window){
+        _.each(windows, function(window, index){
             var windowId = window.id;
-            $(".tree-container").append('<div class="tree" id="'+ windowId +'"></div>');
             chrome.tabs.query({windowId:windowId},function(tabs){
-                _.each(tabs, function(tab){
-                    var volume_icon = '';
-
-                    if(tab.audible){
-                        volume_icon = '<span title="Click to mute" id="'+ tab.id +'" class="volume-icon fa fa-volume-up"></span>';                
-                    }
-                    $(".tree#"+windowId).append('<div class="branch">'+ volume_icon +'<label><input class="close-tab" index="'+ tab.index +'" url="'+ tab.url +'" checked id="'+ tab.id +'" type="checkbox" name="checkbox" value="value"><img src="' + tab.favIconUrl + '" class="label-favIcon fa fa-file-o"/><span class="label-text">' + tab.title + '</span></label></div>');
-                });
+                if(!(_.isEmpty(tabs))){
+                    var tree_header = '<div class="tree-header" id="tab_tree_header_'+ windowId+'"><input class="close-window-tab" windowId="'+windowId+'" checked id="close_window_'+ windowId +'" type="checkbox"/><label>Window '+ (index+1) +'</label></div>';
+                    var tree_body = '<div class="tree-body" id="tab_tree_body_'+ windowId+'"></div>';
+                    $(".tree-container").append('<div class="tree" id="tree_'+ windowId +'">'+ tree_header + tree_body +'</div>');
+                    _.each(tabs, function(tab){
+                        var volume_icon = '';
+                        if(tab.audible){
+                            volume_icon = '<span title="Click to mute" id="'+ tab.id +'" class="volume-icon fa fa-volume-up"></span>';                
+                        }
+                        $("#tab_tree_body_"+windowId).append('<div class="branch">'+ volume_icon +'<input class="close-tab" windowId="'+windowId+'" index="'+ tab.index +'" url="'+ tab.url +'" checked id="'+ tab.id +'" type="checkbox"><label tabId="'+ tab.id +'" windowId="'+windowId+'" class="navigate-tab"><img src="' + tab.favIconUrl + '" class="label-favIcon fa fa-file-o"/><span class="label-text">' + tab.title + '</span></label></div>');
+                    });
+                }
             });
         })
     });

@@ -5,6 +5,7 @@ $(document).ready(function(){
 	});
 
 	$(".modal-close").on("click", function(){
+    	chrome.storage.sync.set({'tabTree': 'hide'});
 		$(".modal-bg").hide();
 	});
 

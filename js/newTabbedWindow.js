@@ -61,10 +61,8 @@ $(document).ready(function(){
 			alert("Please provide a name for new tabbbed window");
 		}
 	});
-
 	$("body").on('click','.tab-remove', function(event){
-		if (confirm("Are you sure, you want to delete this Tabbb?")) {
-			var tabbb_id = $(this).attr("id");
+		var tabbb_id = $(this).attr("id");
 			chrome.storage.sync.get("tabbbes", function(_tabbbes){
 				var tabbbes = _tabbbes.tabbbes;
 				var newtabbbes = [];
@@ -73,9 +71,9 @@ $(document).ready(function(){
 						newtabbbes.push(tabbb);
 					}
 				});
-				chrome.storage.sync.set({'tabbbes': newtabbbes}, function(){});
-			});
-		}
+			chrome.storage.sync.set({'tabbbes': newtabbbes}, function(){});
+		});
+		event.preventDefault()
 	});
 
 	function newTabbedWindowInitiate() {

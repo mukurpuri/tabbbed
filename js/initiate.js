@@ -4,7 +4,6 @@ $(document).ready(function(){
     setDashboard();
     function setDashboard() {
         $(".tab-container").html("");
-
         chrome.storage.sync.get("tabbbes", function(_tabbbes){
             var tabbbes = _tabbbes.tabbbes;
             if(!tabbbes) {chrome.storage.sync.set({'tabbbes': []});}
@@ -49,6 +48,8 @@ $(document).ready(function(){
     $("body").on('click', '.openNew', function(event) {
         var id = $(this).attr("tabbbID");
         chrome.storage.sync.get("tabbbes", function(_tabbbes){
+            console.log(_tabbbes);
+
             var urlList = [];
             var selectedTabbb = _.find(_tabbbes.tabbbes, function(tabbb) { return parseInt(tabbb.id) === parseInt(id); });
             var mode = selectedTabbb.mode === "true" ? true : false;
@@ -63,6 +64,7 @@ $(document).ready(function(){
     $("body").on('click', '.openTab', function(event) {
         var id = $(this).attr("tabbbID");
         chrome.storage.sync.get("tabbbes", function(_tabbbes){
+            console.log(_tabbbes);
             var selectedTabbb = _.find(_tabbbes.tabbbes, function(tabbb) { return parseInt(tabbb.id) === parseInt(id); });
             var mode = selectedTabbb.mode === "true" ? true : false;
             _.each(selectedTabbb.tabbbes, function(tabbb){
