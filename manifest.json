@@ -1,6 +1,6 @@
 {
   "name": "Tabbbed",
-  "version": "0.4",
+  "version": "0.5",
   "manifest_version": 2,
 
   "description": "Group your tabs and make your life easier",
@@ -21,6 +21,6 @@
     "128": "images/icon.png",
     "256": "images/icon.png",
     "512": "images/icon.png"
-  }
-
+  },
+  "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'"
 }
