@@ -453,15 +453,17 @@ body {
   position: absolute;
   bottom: 0px;
   width: 100%;
-  padding: 10px;
+  padding: 25px 40px;
   left: 0;
   right: 0;
   margin: 0 auto;
-  text-align: center; }
+  text-align: center;
+  background: #f3f3f3;
+  border-top: 1px solid #dedede; }
   .footer .footer-btn {
     display: inline-block;
     margin-right: 17px;
-    padding: 3px 13px;
+    padding: 7px 20px;
     border-radius: 4px;
     letter-spacing: 1px;
     color: #2c2c2c;
@@ -472,20 +474,13 @@ body {
     min-width: 100px;
     text-align: center;
     cursor: pointer;
-    transition: all 0.2s; }
+    transition: all 0.2s;
+    font-size: 13px; }
     .footer .footer-btn:hover {
       background-image: none;
       background-color: #fff; }
     .footer .footer-btn:last-child {
       margin-right: 0px; }
-  .footer .fa-tree {
-    color: #20b700; }
-  .footer .fa-bar-chart {
-    color: #ff507c; }
-  .footer .fa-star {
-    color: #f2ba00; }
-  .footer .fa-th-large {
-    color: #6c9dc3; }
 
 .tree-container {
   position: relative;

@@ -489,27 +489,30 @@ body {
     position: absolute;
     bottom: 0px;
     width: 100%;
-    padding: 10px;
+    padding: 25px 40px;
     left: 0;
     right: 0;
     margin: 0 auto;
     text-align: center;
+    background: rgb(243, 243, 243);
+    border-top: 1px solid #dedede;
 
     .footer-btn {
-        display: inline-block;
-        margin-right: 17px;
-        padding: 3px 13px;
-        border-radius: 4px;
-        letter-spacing: 1px;
-        color: #2c2c2c;
-        border: 1px solid #cdcdcd;
-        background-image: -webkit-gradient(linear, left top, left bottom, from(#f4f5f5), to(#dfdddd));
-        background-image: -webkit-linear-gradient(top, #f4f5f5, #dfdddd);
-        background-image: linear-gradient(to bottom, #ffffff, #f4eeee);
-        min-width: 100px;
-        text-align: center;
-        cursor: pointer;
-        transition: all 0.2s;
+            display: inline-block;
+            margin-right: 17px;
+            padding: 7px 20px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            color: #2c2c2c;
+            border: 1px solid #cdcdcd;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#f4f5f5), to(#dfdddd));
+            background-image: -webkit-linear-gradient(top, #f4f5f5, #dfdddd);
+            background-image: linear-gradient(to bottom, #ffffff, #f4eeee);
+            min-width: 100px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 13px;
 
         &:hover {
             background-image: none;
@@ -519,18 +522,6 @@ body {
         &:last-child {
             margin-right: 0px;
         }
-    }
-    .fa-tree {
-        color: #20b700;
-    }
-    .fa-bar-chart {
-        color: #ff507c;
-    }
-    .fa-star {
-        color: #f2ba00;
-    }
-    .fa-th-large {
-        color: #6c9dc3;
     }
 }
 .tree-container {
