@@ -1,0 +1,89 @@
+body {
+	font: 16px/1.54em 'Raleway',sans-serif;
+    color: #676767;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    background-color: #fff;
+    overflow-x: hidden!important;
+    background: #ece9e6;
+    background: -webkit-linear-gradient(left,#fff,#ece9e6);
+    background: -o-linear-gradient(left,#fff,#ece9e6);
+    background: linear-gradient(to right,#fff,#ece9e6);
+    letter-spacing: 1.5px;
+}
+	
+@-webkit-keyframes rotating {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.rotating {
+  -webkit-animation: rotating 60s linear infinite;
+  -moz-animation: rotating 60s linear infinite;
+  -ms-animation: rotating 60s linear infinite;
+  -o-animation: rotating 60s linear infinite;
+  animation: rotating 60s linear infinite;
+}
+
+.title {
+	margin-top: 65px;
+}
+.scrn-container {
+	border: 1px solid #b9b9b9;
+    border-radius: 4px;
+    box-shadow: 1px 1px 1px #ccc;
+    overflow: hidden;
+}
+.scrn-container	> img {
+	width: 100%;
+}
+.passage {
+	background: white;
+    padding: 15px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    box-shadow: 1px 1px 1px #c7c7c7;
+    position: relative;
+}
+.tag {
+	position: absolute;
+    top: 0;
+    left: 0;
+    padding: 4px 14px;
+    color: white;
+    font-weight: bold;
+    border-radius: 0 0 4px 0;
+}
+.tag.before {
+	background-color: #ff5c51;
+}
+.tag.after {
+	background-color: #66bb10;
+}
+.nopaddin {
+	padding: 0px;
+}
