@@ -54,9 +54,11 @@ body {
 }
 .scrn-container {
 	border: 1px solid #b9b9b9;
-    border-radius: 4px;
-    box-shadow: 1px 1px 1px #ccc;
-    overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px #ccc;
+  overflow: hidden;
+  width: 457.5px;
+  height: 403px;
 }
 .scrn-container	> img {
 	width: 100%;

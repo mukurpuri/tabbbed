@@ -129,10 +129,7 @@ $(document).ready(function(){
         console.log("hello");
         var id = parseInt($(this).attr("tabId"));
         var windowId = parseInt($(this).attr("windowId"));
-        //console.log(id+"__"+windowId);chrome.tabs.update(id, {'active': true});
-        chrome.windows.update(windowId, {focused: true}, function(window){
-            
-        });
+        chrome.windows.update(windowId, {focused: true});
         chrome.tabs.update(id, {'active': true});
     });
 });
