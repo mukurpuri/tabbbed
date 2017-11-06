@@ -126,12 +126,14 @@ $(document).ready(function(){
     });
 
     $("body").on("click", ".navigate-tab", function(){
+        console.log("hello");
         var id = parseInt($(this).attr("tabId"));
         var windowId = parseInt($(this).attr("windowId"));
-        console.log(id+"__"+windowId);
+        //console.log(id+"__"+windowId);chrome.tabs.update(id, {'active': true});
         chrome.windows.update(windowId, {focused: true}, function(window){
-            chrome.tabs.update(id, {'active': true});
+            
         });
+        chrome.tabs.update(id, {'active': true});
     });
 });
 
