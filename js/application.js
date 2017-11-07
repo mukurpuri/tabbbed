@@ -94,7 +94,6 @@ $(document).ready(function(){
             chrome.tabs.update(parseInt(id), {muted: true});
             $(this).removeClass('fa-volume-up').addClass('fa-volume-off');
             $(this).attr("title","Click to unmute");
-            
         } else {
             chrome.tabs.update(parseInt(id), {muted: false});
             $(this).removeClass('fa-volume-off').addClass('fa-volume-up');
@@ -103,34 +102,30 @@ $(document).ready(function(){
     });
 
     $("body").on("click",".close-window-tab", function(){
-        var windowId = parseInt($(this).attr('windowId'));
-        chrome.windows.remove(windowId, function(){
-            $("#tree_"+windowId).remove();
+        var id = parseInt($(this).attr('id').split("_")[2]);
+        console.log(id);
+        chrome.windows.remove(id, function(){
+            $("#tree_"+id).hide('slow', function(){ $("#tree_"+id).remove(); });           
         });
     });
 
     $("body").on("click",".close-tab", function(){
-        var id = parseInt($(this).attr('id'));
-        var url = $(this).attr('url');
-        var index = parseInt($(this).attr('index'));
-        var windowId = parseInt($(this).attr('windowId'));
-
-        if($(this).is(":checked")){
-            chrome.tabs.create({'url':url, 'index': index,'active':false, 'windowId':windowId}, function(tab){
-                $(".close-tab#" + id).attr("id",tab.id);
-                $(".close-tab#" + id).attr("windowId",tab.windowId);
-            });
-        } else {
-            chrome.tabs.remove(id);
-        }
+        var id = parseInt($(this).attr('id').split("_")[2]);
+        chrome.tabs.remove(id, function(){
+            $("#branch_tab_"+id).hide('slow', function(){ $("#branch_tab_"+id).remove();});
+        });
     });
 
     $("body").on("click", ".navigate-tab", function(){
-        console.log("hello");
         var id = parseInt($(this).attr("tabId"));
         var windowId = parseInt($(this).attr("windowId"));
         chrome.windows.update(windowId, {focused: true});
         chrome.tabs.update(id, {'active': true});
+    });
+
+    $("body").on("click", ".navigate_window", function(){
+        var id = parseInt($(this).attr('id').split("_")[2]);
+        chrome.windows.update(id, {focused: true});
     });
 });
 
@@ -153,23 +148,32 @@ function groupUrls(urls) {
     }, {});
     return Object.values(results);
 }
+
 function openTabTree() {
     $("#tab-tree-creator").show();
     chrome.storage.sync.set({'tabTree': 'show'});
+    fetchTrees();
+}
+
+function fetchTrees() {
+    $(".tree-container").html("");
+    console.log("qwef");
     chrome.windows.getAll(function(windows){
         _.each(windows, function(window, index){
             var windowId = window.id;
+            var current_window_indicator = window.focused ? '<span class="current_window_indicator"></span>' : '';
             chrome.tabs.query({windowId:windowId},function(tabs){
                 if(!(_.isEmpty(tabs))){
-                    var tree_header = '<div class="tree-header" id="tab_tree_header_'+ windowId+'"><input class="close-window-tab" windowId="'+windowId+'" checked id="close_window_'+ windowId +'" type="checkbox"/><label>Window '+ (index+1) +'</label></div>';
+                    var tree_header = '<div class="tree-header" id="tab_tree_header_'+ windowId+'"><span class="close-window-tab fa fa-times-circle" id="close_window_'+ windowId +'"></span>'+ current_window_indicator +'<label class="navigate_window" id="navigate_window_'+ windowId +'">Window '+ (index+1) +'</label></div>';
                     var tree_body = '<div class="tree-body" id="tab_tree_body_'+ windowId+'"></div>';
-                    $(".tree-container").append('<div class="tree" id="tree_'+ windowId +'">'+ tree_header + tree_body +'</div>');
+                    $(".tree-container").append('<div class="tree grid-item" id="tree_'+ windowId +'">' + tree_header + tree_body +'</div>');
                     _.each(tabs, function(tab){
-                        var volume_icon = '';
+                        var volume_icons = '';
                         if(tab.audible){
-                            volume_icon = '<span title="Click to mute" id="'+ tab.id +'" class="volume-icon fa fa-volume-up"></span>';                
+                            volume_icons = '<div class="volume-icons"><span title="Click to mute" id="'+ tab.id +'" class="volume-icon fa fa-volume-up"></span></div>';                
                         }
-                        $("#tab_tree_body_"+windowId).append('<div class="branch">'+ volume_icon +'<input class="close-tab" windowId="'+windowId+'" index="'+ tab.index +'" url="'+ tab.url +'" checked id="'+ tab.id +'" type="checkbox"><label tabId="'+ tab.id +'" windowId="'+windowId+'" class="navigate-tab"><img src="' + tab.favIconUrl + '" class="label-favIcon fa fa-file-o"/><span class="label-text">' + tab.title + '</span></label></div>');
+                        var current_tab_indicator = tab.active ? 'current_tab_indicator' : '';
+                        $("#tab_tree_body_"+windowId).append('<div id="branch_tab_'+ tab.id +'" class="branch">'+ volume_icons +'<span title="Close this Tab" class="close-tab fa fa-times-circle" id="close_tab_'+ tab.id +'"></span><label tabId="'+ tab.id +'" windowId="'+windowId+'" class="navigate-tab"><img src="' + tab.favIconUrl + '" class="label-favIcon fa fa-file-o"/><span class="label-text '+ current_tab_indicator + '">' + tab.title + '</span></label></div>');
                     });
                 }
             });

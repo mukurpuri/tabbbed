@@ -1,6 +1,5 @@
 body {
     width: 100%;
-    background: url('../images/background.png') top no-repeat;
     margin: 0;
     position: relative;
     flex: 1;
@@ -182,7 +181,7 @@ body {
         background: #fbfbfb;
         font-size: 10px;
         font-family: sans-serif;
-        letter-spacing: 1px;
+        letter-spacing: 0.5px;
         text-transform: uppercase;
         padding: 3px 10px;
         color: #7d7d7d;
@@ -414,7 +413,7 @@ body {
     padding: 6px 20px;
     font-size: 13px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 .link-tag {
     border: 1px solid #c6c5c5;
@@ -502,7 +501,7 @@ body {
             margin-right: 17px;
             padding: 7px 20px;
             border-radius: 4px;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             color: #2c2c2c;
             border: 1px solid #cdcdcd;
             background-image: -webkit-gradient(linear, left top, left bottom, from(#f4f5f5), to(#dfdddd));
@@ -526,9 +525,7 @@ body {
 }
 .tree-container {
     position: relative;
-    width: 100%;
-    height: 515px;
-    overflow-x: auto;
+    padding: 10px;
     .tree {
         border: 1px solid #dedede;
         border-radius: 4px;
@@ -537,6 +534,23 @@ body {
         margin-bottom: 10px;
         padding-top: 0px;
         position: relative;
+        overflow: hidden;
+        .tree-disable {
+          position: absolute;
+          width: 564px;
+          height: 100%;
+          background: rgba(250, 250, 250, 0.81);
+          z-index: 1;
+          margin-top: 45px;
+
+          &.hide {
+            display: none;
+          }
+
+          &.show {
+            display: block;
+          }
+      }
     }
     input[type="checkbox"] {
         margin: 10px;
@@ -546,12 +560,12 @@ body {
     }
     label {
         font-size: 14px;
-        letter-spacing: 1px;
+        letter-spacing: 0.5px;
         cursor: pointer;
     }
     .label-text {
         display: inline-block;
-        width: 450px;
+        width: 630px;
         text-align: left;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -570,26 +584,39 @@ body {
     }
     .branch {
         position: relative;
+        margin: 10px 0px;
+        &:hover {
+            .close-tab {
+                color: #6b6a6a;
+            }
+        }
     }
-    .volume-icon {
+    .volume-icons {
         position: absolute;
         right: 0px;
-        top: 5px;
+        top: -1px;
         cursor: pointer;
-        padding: 4px;
-        background: #f9f9f9;
-        border: 1px solid #bbb;
-        border-radius: 32px;
-        box-shadow: 1px 1px 1px #f1f1f1;
-        width: 12px;
-        text-align: center;
+        .fa {
+            padding: 4px;
+            background: #f9f9f9;
+            border: 1px solid #bbb;
+            border-radius: 32px;
+            box-shadow: 1px 1px 1px #f1f1f1;
+            width: 12px;
+            text-align: center;
+            float: left;
+            margin-right: 5px;
+        }
+        .fa-pause {
+            font-size: 12px;
+        }
     }
 }
 .tree-header {
     border-bottom: 1px solid #dcdcdc;
     margin: 0 -10px;
     padding: 10px;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     font-size: 13px;
     color: #757575;
     position: relative;
@@ -597,7 +624,37 @@ body {
 
     .close-window-tab {
         float: right;
-        margin: 0!important;
-        cursor: pointer
+        margin: 0 !important;
+        cursor: pointer;
+        font-size: 18px;
+        color: #cecece;
+    }
+
+    &:hover {
+        .close-window-tab {
+            color: #6b6a6a;
+        }
+    }
+}
+.close-tab {
+    font-size: 15px;
+    margin-right: 10px;
+    color: #cecece;
+    vertical-align: bottom;
+    cursor: pointer;
+}
+.current_window_indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50% 50%;
+    background: #61d84a;
+    display: inline-block;
+    margin-right: 12px;
+}
+.tree-body {
+    position: relative;
+
+    .current_tab_indicator {
+        background: rgba(67, 212, 255, 0.05);
     }
 }
