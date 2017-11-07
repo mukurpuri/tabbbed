@@ -584,12 +584,16 @@ body {
     }
     .branch {
         position: relative;
-        margin: 10px 0px;
+        padding: 5px 0px;
+        border-bottom: 1px dashed #d8d8d8;
         &:hover {
             .close-tab {
                 color: #6b6a6a;
             }
         }
+    }
+    .selected {
+        background: rgb(240, 240, 240);
     }
     .volume-icons {
         position: absolute;

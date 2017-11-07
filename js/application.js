@@ -127,6 +127,10 @@ $(document).ready(function(){
         var id = parseInt($(this).attr('id').split("_")[2]);
         chrome.windows.update(id, {focused: true});
     });
+
+    $("body").on('mouseenter', '.branch', function(event) {
+        $(this).addClass('selected');
+    });
 });
 
 function groupUrls(urls) {
