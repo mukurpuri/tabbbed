@@ -487,7 +487,6 @@ body {
   .tree-container .tree {
     border: 1px solid #dedede;
     border-radius: 4px;
-    background: rgba(0, 0, 0, 0.02);
     padding: 10px 10px;
     margin-bottom: 10px;
     padding-top: 0px;
@@ -521,7 +520,6 @@ body {
     text-overflow: ellipsis;
     white-space: nowrap;
     vertical-align: bottom;
-    background: rgba(0, 0, 0, 0.01);
     padding-left: 8px; }
   .tree-container .label-favIcon {
     display: inline-block;
@@ -564,7 +562,8 @@ body {
   font-size: 13px;
   color: #757575;
   position: relative;
-  overflow: hidden; }
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.02); }
   .tree-header .close-window-tab {
     float: right;
     margin: 0 !important;

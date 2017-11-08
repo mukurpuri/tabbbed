@@ -1,61 +1,63 @@
 
 $(document).ready(function(){
 
-    chrome.storage.sync.get("tabTree", function(tabTree){
-        console.log(tabTree.tabTree);
-        if(!tabTree.tabTree) {
-            chrome.storage.sync.set({'tabTree': 'hide'});
-        }
-        if(tabTree.tabTree === "show") {
-            openTabTree();    
-        }
-    });
+    fetchTrees();
 
-    var totalTabs = 6;
-	chrome.storage.onChanged.addListener(function(){
-		$(".tab-container").html("");
-		chrome.storage.sync.get("tabbbes", function(_tabbbes){
-            var tabbbes = _tabbbes.tabbbes;
-            if(!tabbbes) {
-                console.log('Tabbes cleaned');
-                chrome.storage.sync.set({'tabbbes': []});
-            }
-            _.each(tabbbes, function(tabbb){
-                var icons = "";
-                _.each(tabbb.tabbbes, function(tabbb){
-                    icons = icons + '<img title="' + tabbb.title + '" class="tab-icons" src="' + tabbb.favIconUrl + '"  />'
-                });
-                var tabs = '<a class="tabs filledTabs">'+
-                '<span id="' + tabbb.id +'" title="Close" class="fa fa-times tab-remove"></span>'+
-                '<div class="tab-opener-buttons">'+
-                '<div class="tab-opener-btn openTab" tabbbID="'+tabbb.id+'" title="Open in the current Tab"><i class="fa fa-send"></i></div>'+
-                '<div class="tab-opener-btn openNew" tabbbID="'+tabbb.id+'" title="Open in a new window"><i class="fa fa-window-restore"></i></div>'+
-                '</div>'+
-                '<div class="tab-opener"></div>'+
-                '<div class="tab-body">'+icons+'</div>'+ 
-                '<div class="tab-footer">'+
-                '<div class="tab-name">' + tabbb.name + '</div>'+
-                '</div>'+
-                '</div>'+
-                '</a>';
-                $(".tab-container").append(tabs);
-            });
-            var leftOver = totalTabs - (tabbbes.length);
-            if(leftOver > 0) {
-                var emptyTabs = '<a class="tabs emptyTabs">'+
-                '<div title="Add new Tabbbed Window">'+
-                '<div class="tab-body"></div>'+ 
-                '<div class="tab-footer">'+
-                '<div class="tab-name">' + 'New +' + '</div>'+
-                '</div>'+
-                '</div>'+
-                '</a>';
-                for(var i=0;i<leftOver;i++) {
-                    $(".tab-container").append(emptyTabs);
-                }
-            }
-        });
-	});
+ //    chrome.storage.sync.get("tabTree", function(tabTree){
+ //        console.log(tabTree.tabTree);
+ //        if(!tabTree.tabTree) {
+ //            chrome.storage.sync.set({'tabTree': 'hide'});
+ //        }
+ //        if(tabTree.tabTree === "show") {
+ //            openTabTree();    
+ //        }
+ //    });
+
+ //    var totalTabs = 6;
+	// chrome.storage.onChanged.addListener(function(){
+	// 	$(".tab-container").html("");
+	// 	chrome.storage.sync.get("tabbbes", function(_tabbbes){
+ //            var tabbbes = _tabbbes.tabbbes;
+ //            if(!tabbbes) {
+ //                console.log('Tabbes cleaned');
+ //                chrome.storage.sync.set({'tabbbes': []});
+ //            }
+ //            _.each(tabbbes, function(tabbb){
+ //                var icons = "";
+ //                _.each(tabbb.tabbbes, function(tabbb){
+ //                    icons = icons + '<img title="' + tabbb.title + '" class="tab-icons" src="' + tabbb.favIconUrl + '"  />'
+ //                });
+ //                var tabs = '<a class="tabs filledTabs">'+
+ //                '<span id="' + tabbb.id +'" title="Close" class="fa fa-times tab-remove"></span>'+
+ //                '<div class="tab-opener-buttons">'+
+ //                '<div class="tab-opener-btn openTab" tabbbID="'+tabbb.id+'" title="Open in the current Tab"><i class="fa fa-send"></i></div>'+
+ //                '<div class="tab-opener-btn openNew" tabbbID="'+tabbb.id+'" title="Open in a new window"><i class="fa fa-window-restore"></i></div>'+
+ //                '</div>'+
+ //                '<div class="tab-opener"></div>'+
+ //                '<div class="tab-body">'+icons+'</div>'+ 
+ //                '<div class="tab-footer">'+
+ //                '<div class="tab-name">' + tabbb.name + '</div>'+
+ //                '</div>'+
+ //                '</div>'+
+ //                '</a>';
+ //                $(".tab-container").append(tabs);
+ //            });
+ //            var leftOver = totalTabs - (tabbbes.length);
+ //            if(leftOver > 0) {
+ //                var emptyTabs = '<a class="tabs emptyTabs">'+
+ //                '<div title="Add new Tabbbed Window">'+
+ //                '<div class="tab-body"></div>'+ 
+ //                '<div class="tab-footer">'+
+ //                '<div class="tab-name">' + 'New +' + '</div>'+
+ //                '</div>'+
+ //                '</div>'+
+ //                '</a>';
+ //                for(var i=0;i<leftOver;i++) {
+ //                    $(".tab-container").append(emptyTabs);
+ //                }
+ //            }
+ //        });
+	// });
 
     $("body").on('click', '#group-similar', function(event) {
         var windows = [];
@@ -111,9 +113,8 @@ $(document).ready(function(){
 
     $("body").on("click",".close-tab", function(){
         var id = parseInt($(this).attr('id').split("_")[2]);
-        chrome.tabs.remove(id, function(){
-            $("#branch_tab_"+id).hide('slow', function(){ $("#branch_tab_"+id).remove();});
-        });
+        closeTab(id);
+        
     });
 
     $("body").on("click", ".navigate-tab", function(){
@@ -128,11 +129,19 @@ $(document).ready(function(){
         chrome.windows.update(id, {focused: true});
     });
 
-    $("body").on('mouseenter', '.branch', function(event) {
-        $(this).addClass('selected');
+    $("body").on('mouseenter', '.branch', function(e) {
+        if (!e) e = window.event;
+        if (e.ctrlKey || e.metaKey) {
+            var id = e.currentTarget.id.split("_")[2];
+            closeTab(parseInt(id));
+        }
     });
 });
-
+function closeTab(id){
+    chrome.tabs.remove(id, function(){
+        $("#branch_tab_"+id).hide('slow', function(){ $("#branch_tab_"+id).remove();});
+    });
+}
 function groupUrls(urls) {
     const results = urls.reduce((a, x) => {
         const hostparts = new URL(x).host.split('.');
@@ -161,7 +170,6 @@ function openTabTree() {
 
 function fetchTrees() {
     $(".tree-container").html("");
-    console.log("qwef");
     chrome.windows.getAll(function(windows){
         _.each(windows, function(window, index){
             var windowId = window.id;
