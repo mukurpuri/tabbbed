@@ -5,4 +5,6 @@
 /*chrome.browserAction.onClicked.addListener(function(tab) {
   chrome.tabs.create({url:chrome.extension.getURL("tabbbed.html")});
 });*/
-
+chrome.commands.onCommand.addListener(function(command) {
+  console.log('onCommand event received for message: ', command);
+});

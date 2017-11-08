@@ -129,14 +129,38 @@ $(document).ready(function(){
         chrome.windows.update(id, {focused: true});
     });
 
+    var selected_ids = [];
     $("body").on('mouseenter', '.branch', function(e) {
         if (!e) e = window.event;
         if (e.ctrlKey || e.metaKey) {
+            console.log(e.keyCode);
             var id = e.currentTarget.id.split("_")[2];
-            closeTab(parseInt(id));
+            selected_ids.push(parseInt(id));
+            $(this).addClass("selected");
         }
     });
+    document.querySelector('body').onkeydown = function (e) {
+        if ( !e.metaKey ) {
+            e.preventDefault();
+        }
+        if(e.keyCode == 46) {
+            closeTabs(selected_ids);
+            selected_ids.length = 0;
+        }
+        if(e.keyCode == 27) {
+            $(".branch").removeClass('selected');
+            selected_ids.length = 0;
+        }
+    };
+
 });
+function closeTabs(ids){
+    _.each(ids, function(id){
+        chrome.tabs.remove(id, function(){
+            $("#branch_tab_"+id).hide('slow', function(){ $("#branch_tab_"+id).remove();});
+        });
+    });
+}
 function closeTab(id){
     chrome.tabs.remove(id, function(){
         $("#branch_tab_"+id).hide('slow', function(){ $("#branch_tab_"+id).remove();});

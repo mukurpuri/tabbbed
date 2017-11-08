@@ -6,8 +6,8 @@
   "description": "Group your tabs and make your life easier",
   
   "background": {
-    "persistent": false,
-    "scripts": ["background.js"]
+    "scripts": ["background.js"],
+    "persistent": false
   },
   
   "browser_action": {
@@ -22,5 +22,20 @@
     "256": "images/icon.png",
     "512": "images/icon.png"
   },
-  "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'"
+  "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'",
+  "chrome_url_overrides" : {
+    "newtab": "newTab.html"
+  },
+  "commands": {
+    "toggle-feature": {
+      "suggested_key": { "default": "Ctrl+Shift+Y" },
+      "description": "Send a 'toggle-feature' event to the extension"
+    },
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F",
+        "mac": "MacCtrl+Shift+F"
+      }
+    }
+  }
 }

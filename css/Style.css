@@ -531,15 +531,16 @@ body {
   .tree-container .branch {
     position: relative;
     padding: 5px 0px;
-    border-bottom: 1px dashed #d8d8d8; }
+    border-bottom: 1px dashed #d8d8d8;
+    transition: all 0.2s; }
     .tree-container .branch:hover .close-tab {
       color: #6b6a6a; }
   .tree-container .selected {
     background: #f0f0f0; }
   .tree-container .volume-icons {
     position: absolute;
-    right: 0px;
-    top: -1px;
+    right: -7px;
+    top: 5px;
     cursor: pointer; }
     .tree-container .volume-icons .fa {
       padding: 4px;

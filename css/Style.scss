@@ -584,6 +584,7 @@ body {
         position: relative;
         padding: 5px 0px;
         border-bottom: 1px dashed #d8d8d8;
+        transition: all 0.2s;
         &:hover {
             .close-tab {
                 color: #6b6a6a;
@@ -595,8 +596,8 @@ body {
     }
     .volume-icons {
         position: absolute;
-        right: 0px;
-        top: -1px;
+        right: -7px;
+        top: 5px;
         cursor: pointer;
         .fa {
             padding: 4px;
