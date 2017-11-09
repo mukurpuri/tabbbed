@@ -5,29 +5,91 @@
  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
  	<title>New Tab</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
- 	<link rel="stylesheet" href="newTab/css/lib/grid.css">
+ 	<link rel="stylesheet" href="newTab/js/lib/bootstrap.css">
  	<link rel="stylesheet" href="newTab/css/style.css">
  </head>
  <body>
- 	<div class="body-content">
- 		<div class="links-container">
- 			<ul>
- 				<li><a><span class="fa fa-clock-o"></span>History</a></li>
- 				<li><a><span class="fa fa-gear"></span>Settings</a></li>
- 			</ul>
+ 	<div class="container-fluid header">
+ 		<div class="row">
+			<div class="col-sm-9">
+				<div class="search-wrap-home">
+				<input id="search_form_input_homepage" class="js-search-input" type="text" autocomplete="off" name="q" tabindex="1" value="" autocapitalize="off" autocorrect="off" autofocus placeholder="Search everything">
+				<span class="search-button fa fa-search"></span>
+				<img class="search-button-google" src="images/icons/google_icon.png" />
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="links-container">
+					<ul>
+						<li class="col-sm-4 hidden-md"><a class="row"><span class="fa fa-clock-o"></span>History</a></li>
+						<li class="col-md-4 col-lg-4"><a class="row"><span class="fa fa-reorder"></span>Group Tabs</a></li>
+						<li class="col-md-4 col-lg-4"><a class="row"><span class="fa fa-gear"></span>Settings</a></li>
+					</ul>
+				</div>
+			</div>
  		</div>
- 		<div class="search-wrap-home">
-			<input id="search_form_input_homepage" class="js-search-input" type="text" autocomplete="off" name="q" tabindex="1" value="" autocapitalize="off" autocorrect="off" autofocus placeholder="Search everything">
-			<span class="search-button fa fa-search"></span>
- 		</div>
- 		<div class="container">
- 			<div class="row">
- 				<div class="col-12">
+ 	</div>
+ 	<div class="container-fluid">
+ 		<div class="row">
+ 			<div class="col-sm-7 col-lg-8 col-xl-9">
+ 				<div class="row">
+ 					<div class="col-xl-3 col-lg-3">
+ 						<div class="frequent-tab">
+ 							
+ 						</div>
+ 					</div>
+ 					<div class="col-xl-3 col-lg-3">
+ 						<div class="frequent-tab">
+ 							
+ 						</div>
+ 					</div>
+ 					<div class="col-xl-3 col-lg-3">
+ 						<div class="frequent-tab">
+ 							
+ 						</div>
+ 					</div>
+ 					<div class="col-xl-3 col-lg-3">
+ 						<div class="frequent-tab">
+ 							
+ 						</div>
+ 					</div>
+ 					<div class="col-xl-3 col-lg-3">
+ 						<div class="frequent-tab">
+ 							
+ 						</div>
+ 					</div>
+ 					<div class="col-xl-3 col-lg-3">
+ 						<div class="frequent-tab">
+ 							
+ 						</div>
+ 					</div>
+ 				</div>
+ 			</div>
+ 			<div class="col-sm-5 col-lg-4 col-xl-3">
+ 				<div class="book-container">
+ 					<div class="header">
+ 						Notepad
+ 					</div>
+ 					<div class="strip">
+					    <div class="elements" style="background: #E91E63;"></div>
+					    <div class="elements" style="background: #798dfd;"></div>
+					    <div class="elements" style="background: #03A9F4;"></div>
+					    <div class="elements" style="background: #00e8e8;"></div>
+					    <div class="elements" style="background: #8BC34A;"></div>
+					    <div class="elements" style="background: #FFEB3B;"></div>
+					    <div class="elements" style="background: #FF9800;"></div>
+					    <div class="elements" style="background: orangered;"></div>
+					    <div class="elements" style="background: brown;"></div>
+					    <div class="elements" style="background: grey;"></div>
+					</div>
+ 					<div class="body">
+ 						<textarea autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+ 					</div>
  				</div>
  			</div>
  		</div>
  	</div>
  </body>
- <script src="../js/lib/jquery.js"></script>
+ <script src="js/lib/jquery.js"></script>
  <script src="newTab/js/script.js"></script>
  </html>

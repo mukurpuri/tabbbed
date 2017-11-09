@@ -1,50 +1,46 @@
 body {
-  background: #f7f7f7; }
+  background: #efefef url(../../images/bg.jpg) left top; }
+
+.header {
+  padding-top: 15px;
+  padding-bottom: 16px;
+  background: rgba(0, 0, 0, 0.03);
+  margin-bottom: 16px; }
 
 .search-wrap-home {
-  padding: 0 .8em 0;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  position: absolute;
-  top: 10px;
-  left: 0px;
-  width: 77%; }
+  position: relative; }
   .search-wrap-home .search-button {
     position: absolute;
     top: 12px;
-    right: 0px;
+    right: 15px;
     z-index: 1;
     color: #949494; }
+  .search-wrap-home img {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 8px;
+    left: 10px; }
   .search-wrap-home .js-search-input {
-    -webkit-appearance: none;
-    appearance: none;
-    -webkit-tap-highlight-color: transparent;
     font-size: 14px;
     font-weight: normal;
     color: #333;
     display: block;
     width: 100%;
-    background: none;
     outline: none;
     border: none;
     height: 40px;
     z-index: 1;
-    position: relative;
-    top: -1px;
     border: 1px solid rgba(0, 0, 0, 0.15);
-    background: white;
-    border-radius: 3px;
+    border-radius: 4px;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.06);
     padding: 0px 15px;
-    letter-spacing: 1px; }
+    letter-spacing: 1px;
+    padding-left: 40px; }
     .search-wrap-home .js-search-input:hover, .search-wrap-home .js-search-input:active, .search-wrap-home .js-search-input:focus {
       box-shadow: 0 4px 7px rgba(0, 0, 0, 0.06); }
 
 .links-container {
-  position: absolute;
-  top: 10px;
-  right: 10px;
   background: #fff;
   border-radius: 4px;
   box-shadow: 1px 1px 1px #dbdbdb;
@@ -59,17 +55,20 @@ body {
       font-size: 13px; }
       .links-container ul li:first-child {
         margin-left: 0px; }
+      .links-container ul li:last-child a {
+        border-right: 0px; }
       .links-container ul li a {
         letter-spacing: 1.5px;
-        color: #666;
-        padding: 10px;
+        color: #757575;
         display: block;
-        border-right: 1px solid #e2e0e0;
-        width: 130px;
         text-align: center;
-        cursor: pointer; }
+        cursor: pointer;
+        line-height: 38px;
+        border-right: 1px solid #e5e5e5;
+        font-weight: bold; }
         .links-container ul li a:hover {
-          background: rgba(0, 0, 0, 0.02); }
+          background: rgba(0, 0, 0, 0.02);
+          text-decoration: none; }
         .links-container ul li a .fa {
           margin-right: 5px; }
         .links-container ul li a .fa-clock-o {
@@ -78,5 +77,54 @@ body {
           color: #7acaff; }
         .links-container ul li a .fa-gear {
           color: lightcoral; }
+
+.book-container {
+  width: 100%;
+  height: 872px;
+  background: white;
+  box-shadow: 1px 1px 1px #d6d6d6;
+  border: 1px solid #d6d6d6;
+  border-radius: 4px; }
+  .book-container .header {
+    padding: 10px;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    color: #8e8e8e;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 0px; }
+  .book-container .body textarea {
+    width: 100%;
+    height: 774px;
+    border: 0px;
+    resize: none;
+    padding: 10px;
+    display: block;
+    outline: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #6d6d6d; }
+
+.strip {
+  height: 1.5px;
+  width: 100%;
+  overflow: hidden; }
+  .strip .elements {
+    width: 10%;
+    height: 100px;
+    float: left; }
+
+.frequent-tab {
+  width: 100%;
+  height: 38px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition-duration: 200ms;
+  transition-property: transform, box-shadow, margin, opacity, width;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+  border-radius: 4px;
+  margin-bottom: 20px; }
 
 /*# sourceMappingURL=style.css.map */
