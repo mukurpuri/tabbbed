@@ -2,8 +2,7 @@ body {
   width: 100%;
   margin: 0;
   position: relative;
-  flex: 1;
-  height: 600px; }
+  flex: 1; }
 
 .sidebar {
   position: fixed;
@@ -25,7 +24,7 @@ body {
   opacity: 100; }
 
 .container {
-  width: 720px;
+  width: 420px;
   margin: 0 auto;
   height: 100%; }
 
@@ -487,11 +486,12 @@ body {
   .tree-container .tree {
     border: 1px solid #dedede;
     border-radius: 4px;
-    padding: 10px 10px;
+    padding: 0px 10px;
     margin-bottom: 10px;
-    padding-top: 0px;
     position: relative;
     overflow: hidden; }
+    .tree-container .tree:last-child {
+      margin-bottom: 0px; }
     .tree-container .tree .tree-disable {
       position: absolute;
       width: 564px;
@@ -511,10 +511,11 @@ body {
   .tree-container label {
     font-size: 14px;
     letter-spacing: 0.5px;
-    cursor: pointer; }
+    cursor: pointer;
+    float: left; }
   .tree-container .label-text {
     display: inline-block;
-    width: 630px;
+    width: 280px;
     text-align: left;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -530,17 +531,19 @@ body {
     color: #757575; }
   .tree-container .branch {
     position: relative;
-    padding: 5px 0px;
-    border-bottom: 1px dashed #d8d8d8;
-    transition: all 0.2s; }
+    padding: 5px 10px;
+    border-bottom: 1px solid #f5f5f5;
+    transition: all 0.2s;
+    overflow: hidden;
+    margin: 0 -10px; }
     .tree-container .branch:hover .close-tab {
       color: #6b6a6a; }
   .tree-container .selected {
     background: #f0f0f0; }
   .tree-container .volume-icons {
     position: absolute;
-    right: -7px;
-    top: 5px;
+    right: 2px;
+    top: 3px;
     cursor: pointer; }
     .tree-container .volume-icons .fa {
       padding: 4px;
@@ -576,10 +579,11 @@ body {
 
 .close-tab {
   font-size: 15px;
-  margin-right: 10px;
+  margin: 4px 10px 0 0;
   color: #cecece;
   vertical-align: bottom;
-  cursor: pointer; }
+  cursor: pointer;
+  float: left; }
 
 .current_window_indicator {
   width: 10px;
@@ -587,7 +591,7 @@ body {
   border-radius: 50% 50%;
   background: #61d84a;
   display: inline-block;
-  margin-right: 12px; }
+  margin-left: 12px; }
 
 .tree-body {
   position: relative; }

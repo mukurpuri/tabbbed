@@ -94,10 +94,10 @@ body {
     padding: 10px;
     letter-spacing: 2px;
     text-transform: capitalize;
-    color: #8e8e8e;
+    color: #6f6e6e;
     font-weight: bold;
     font-size: 16px;
-    text-align: center;
+    text-align: left;
     margin-bottom: 0px; }
   .book-container .body textarea {
     width: 100%;
