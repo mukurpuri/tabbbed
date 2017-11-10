@@ -6,11 +6,16 @@ html, body {
 body {
   background: #efefef url(../../images/bg.jpg) left top; }
 
-.header {
+.container-fluid.header {
   padding-top: 19px;
-  padding-bottom: 19px;
   background: rgba(0, 0, 0, 0.03);
-  margin-bottom: 16px; }
+  height: 9%; }
+.container-fluid.body {
+  height: 91%; }
+.container-fluid .row {
+  height: 100%; }
+.container-fluid .col-* {
+  height: 100%; }
 
 .search-wrap-home {
   position: relative; }
@@ -82,10 +87,12 @@ body {
           color: #7acaff; }
         .links-container ul li a .fa-gear {
           color: lightcoral; }
+        .links-container ul li a .fa-flash {
+          color: #ec1f00; }
 
 .book-container {
   width: 100%;
-  height: 100%;
+  height: 92%;
   background: white;
   box-shadow: 1px 1px 1px #d6d6d6;
   border: 1px solid #d6d6d6;
@@ -98,10 +105,11 @@ body {
     font-weight: bold;
     font-size: 16px;
     text-align: left;
-    margin-bottom: 0px; }
+    margin-bottom: 0px;
+    background: rgba(0, 0, 0, 0.03); }
   .book-container .body textarea {
     width: 100%;
-    height: 774px;
+    height: 100%;
     border: 0px;
     resize: none;
     padding: 10px;
@@ -123,14 +131,14 @@ body {
 .frequent-tab {
   width: 100%;
   height: 44px;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
   cursor: pointer;
   transition-duration: 200ms;
   transition-property: transform, box-shadow, margin, opacity, width;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   background: white;
   border-radius: 4px;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  box-shadow: 0 2px 2px 0 rgba(101, 101, 101, 0.16), 0 0 0 1px rgba(152, 152, 152, 0.08); }
 
 .tabbbs {
   height: 120px; }
@@ -142,5 +150,58 @@ body {
 hr {
   border-bottom: 1px dashed #b7b7b7;
   margin: 0px; }
+
+.left-pannel, .right-pannel {
+  height: 100%; }
+
+.content {
+  padding-top: 30px; }
+
+.section-header {
+  letter-spacing: 0pt;
+  text-align: left;
+  color: #b1b1b1;
+  text-shadow: 0 1px 1px #fff;
+  cursor: default;
+  font-family: monospace;
+  line-height: 0;
+  margin-bottom: 20px;
+  font-size: 21px;
+  margin-top: 7px;
+  word-spacing: -6px; }
+
+.tabsite {
+  overflow: hidden;
+  padding: 10px;
+  padding-left: 40px;
+  position: relative; }
+  .tabsite .fa-times-circle {
+    position: absolute;
+    right: 8px;
+    top: 5px;
+    color: #b9b9b9;
+    display: none; }
+  .tabsite:hover {
+    background: rgba(0, 0, 0, 0.02); }
+    .tabsite:hover .fa-times-circle {
+      display: block; }
+  .tabsite img {
+    float: left;
+    position: absolute;
+    width: 20px;
+    top: 13px;
+    left: 12px; }
+  .tabsite div {
+    float: left;
+    width: 230px;
+    height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-top: 4px;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+    color: #717171;
+    font-size: 13px;
+    padding-right: 15px; }
 
 /*# sourceMappingURL=style.css.map */
